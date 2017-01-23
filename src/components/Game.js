@@ -33,13 +33,13 @@ export default class Game extends Component {
 
     this.setState({
       ripples: [
-        ...this.state.ripples.slice(0, 10),
         <Ripples
           colors={colors}
           x={x}
           y={y}
           key={new Date().getMilliseconds()}
-        />
+        />,
+        ...this.state.ripples.slice(0, 9),
       ]
     })
   }
