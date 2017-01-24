@@ -8,7 +8,7 @@ const circles = (colors = [], x, y, r) => colors.map((color, i) =>
   <circle
     cx={x}
     cy={y}
-    r={radius(i)}
+    r={200}
     fill={`url(#${id(x, y, i, color)})`}
     key={x/y + i + color}
   />

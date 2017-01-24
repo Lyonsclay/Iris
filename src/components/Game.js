@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Ripples from './Ripples'
 import circles from './Circles'
-import colorSet from './colors'
+import colorSet from '../utils/colorSet'
 
 const width = window.innerWidth
 const height = window.innerHeight
@@ -34,7 +34,7 @@ export default class Game extends Component {
   }
 
   handleClick(e) {
-    const colors = colorSet(6)
+    const colors = colorSet(17)
     const x = e.clientX
     const y = e.clientY
 
@@ -44,9 +44,9 @@ export default class Game extends Component {
           colors={colors}
           x={x}
           y={y}
-          key={new Date().getMilliseconds()}
+          key={x + colors[0] + y}
         />,
-        ...this.state.ripples.slice(0, 9),
+        ...this.state.ripples.slice(0, 40),
       ]
     })
   }
@@ -57,23 +57,25 @@ export default class Game extends Component {
     const y = height/2
 
     return (
-      <svg
-        onClick={this.handleClick.bind(this)}
-        width="100%"
-        height="100%"
-        style={{
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          top: 0,
-          bottom: 0,
-          backgroundColor: 'yellow',
-        }}>
+      <div>
+        <svg
+          onClick={this.handleClick.bind(this)}
+          width="100%"
+          height="100%"
+          style={{
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(255, 250, 55, 0.6)',
+          }}>
+          {this.state.ripples}
+        </svg >
         <audio controls autoPlay>
           <source src="../../public/music.wav" />
         </audio>
-        {this.state.ripples}
-      </svg >
+      </div>
     )
   }
 }

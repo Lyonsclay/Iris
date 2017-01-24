@@ -17,7 +17,7 @@ const Ripples = ({colors, x, y}) => {
       />
     )}
       </defs>
-      {circles(colors, x, y, 3 * x)}
+      {circles(colors, x, y)}
     </g>
   )
 }

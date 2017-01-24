@@ -1,7 +1,9 @@
 import React from 'react'
 
 const offset = (i, n) => (i*2 > n)? -.2 : 0
-const opacity = (i, n) => (i == n)? 0 : .4
+const opacity = (i, n) => (i == n - 1)? 0 : .2
+const sequence = [...new Array(10)].map((_, i) => i * 0.04)
+const opacityValues = sequence.concat(sequence.reverse()).join(';')
 
 const Wave = ({colors, id, duration, delay, n = colors.length}) => (
   <radialGradient id={id}>
@@ -14,17 +16,10 @@ const Wave = ({colors, id, duration, delay, n = colors.length}) => (
       >
         <animate
           attributeName="offset"
-          values="0;1;0"
-          begin={i * delay + 's'}
+          values="0;0.9;0"
+          begin={i + 's'}
           dur={duration + 's'}
-          repeatCount="10"
-        />
-        <animate
-          attributeName="stopOpacity"
-          values="0;1"
-          begin="0s"
-          dur={duration + 's'}
-          repeatCount="10"
+          repeatCount="indefinite"
         />
       </stop>
      )}
