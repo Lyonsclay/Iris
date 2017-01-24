@@ -1,12 +1,15 @@
 import React from 'react'
 
-const offset = (i) => (i % 2)? -70 : 50
+const width = window.innerWidth
+const height = window.innerHeight
+const radius = (i) => Math.hypot(width, height) + ((i % 2)? 0 : 50)
+const id = (x, y, i, color) => i + 'wave' + x + color + y
 const circles = (colors = [], x, y, r) => colors.map((color, i) => 
   <circle
     cx={x}
     cy={y}
-    r={r + offset(i) }
-    fill={`url(#${i + 'wave' + x + color + y})`}
+    r={radius(i)}
+    fill={`url(#${id(x, y, i, color)})`}
     key={x/y + i + color}
   />
 )

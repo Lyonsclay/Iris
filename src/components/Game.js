@@ -10,7 +10,14 @@ export default class Game extends Component {
   constructor() {
     super()
 
-    var context = new AudioContext()
+    var context
+    var AudioContext
+
+    if (AudioContext) {
+      context = new AudioContext()
+    } else {
+      context = new window.webkitAudioContext()
+    }
 
     this.state = {
       ripples: [],
@@ -45,21 +52,24 @@ export default class Game extends Component {
   }
 
   render() {
-    const colors = colorSet(6)
+    const colors = colorSet(4)
     const x = width/2
     const y = height/2
 
     return (
-
-      <svg onClick={this.handleClick.bind(this)} width="100%" height="100%" style={{
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
-        backgroundColor: 'rgba(122, 200, 170, .9)',
-      }}>
-        <audio controls autoPlay> 
+      <svg
+        onClick={this.handleClick.bind(this)}
+        width="100%"
+        height="100%"
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          top: 0,
+          bottom: 0,
+          backgroundColor: 'yellow',
+        }}>
+        <audio controls autoPlay>
           <source src="../../public/music.wav" />
         </audio>
         {this.state.ripples}

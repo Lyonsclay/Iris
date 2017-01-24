@@ -15,7 +15,7 @@ const yellowColors = [
 const rndIndex = () => Math.round(Math.random()*4)
 
 export default (n) => [...Array(n)].map((_, i) =>
-  (i % 2)? blueColors[rndIndex()] : yellowColors[rndIndex()]
+  (i % 2)?  yellowColors[rndIndex()] : blueColors[rndIndex()]
 )
 
 

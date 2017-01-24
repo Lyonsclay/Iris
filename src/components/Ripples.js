@@ -11,8 +11,8 @@ const Ripples = ({colors, x, y}) => {
       <Wave
         colors={colors}
         id={i + 'wave' + x + color + y}
-        duration={6}
-        delay={i * .2}
+        duration={10}
+        delay={i * 1}
         key={i + color + y * x}
       />
     )}
