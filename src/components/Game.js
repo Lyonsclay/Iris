@@ -70,11 +70,14 @@ export default class Game extends Component {
             bottom: 0,
             backgroundColor: 'rgba(255, 250, 55, 0.6)',
           }}>
+          <filter id="blur">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+          </filter>
           {this.state.ripples}
         </svg >
-        <audio controls autoPlay>
-          <source src="../../public/music.wav" />
-        </audio>
+        {/* <audio controls autoPlay>
+            <source src="../../public/music.wav" />
+            </audio> */}
       </div>
     )
   }
