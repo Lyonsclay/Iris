@@ -7,6 +7,7 @@ import Ripples from './components/Ripples'
 import Circles from './components/Circles'
 import Game from './components/Game'
 import Test from './components/Test'
+import Donut from './components/Donut'
 
 ReactDOM.render(
   <Game />,

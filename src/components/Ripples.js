@@ -1,5 +1,6 @@
 import React from 'react'
 import Wave from './Wave'
+import Donut from './Donut'
 import circles from './Circles'
 
 const height = window.innerHeight
@@ -17,6 +18,7 @@ const Ripples = ({colors, x, y}) => {
       />
     )}
       </defs>
+      <Donut outRadius={200} />
       {circles(colors, x, y)}
     </g>
   )

@@ -68,11 +68,14 @@ export default class Game extends Component {
             right: 0,
             top: 0,
             bottom: 0,
-            backgroundColor: 'rgba(255, 250, 55, 0.6)',
           }}>
+          <filter id="spotlight">
+            <feBlend in="SourceGraphic" in2="SourceGraphic" mode="multiply"/>
+          </filter>
           <filter id="blur">
             <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
           </filter>
+          <rect x="0" y="0" width="100%" height="100%" fill="rgba(240, 230, 80, 0.4)" filter="url(#spotlight)" />
           {this.state.ripples}
         </svg >
         {/* <audio controls autoPlay>
