@@ -10,18 +10,8 @@ export default class Game extends Component {
   constructor() {
     super()
 
-    var context
-    var AudioContext
-
-    if (AudioContext) {
-      context = new AudioContext()
-    } else {
-      context = new window.webkitAudioContext()
-    }
-
     this.state = {
       ripples: [],
-      context,
     }
   }
 
@@ -69,18 +59,9 @@ export default class Game extends Component {
             top: 0,
             bottom: 0,
           }}>
-          <filter id="spotlight">
-            <feBlend in="SourceGraphic" in2="SourceGraphic" mode="multiply"/>
-          </filter>
-          <filter id="blur">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
-          </filter>
-          <rect x="0" y="0" width="100%" height="100%" fill="rgba(240, 230, 80, 0.4)" filter="url(#spotlight)" />
+          <rect x="0" y="0" width="100%" height="100%" fill="rgba(240, 230, 80, 0.4)" />
           {this.state.ripples}
         </svg >
-        {/* <audio controls autoPlay>
-            <source src="../../public/music.wav" />
-            </audio> */}
       </div>
     )
   }

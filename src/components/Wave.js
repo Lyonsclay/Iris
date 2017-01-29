@@ -2,10 +2,10 @@ import React from 'react'
 
 const offset = (i, n) => (i*2 > n)? -.2 : 0
 // Setting last color cirlce to 0 prevents static circle.
-const opacity = (i, n) => (i == n - 1)? 0 : .2
+const opacity = (i, n) => (i == n - 1)? 0.1 : .4
 const sequence = [...new Array(10)].map((_, i) => i * 0.04)
 const opacityValues = sequence.concat(sequence.reverse()).join(';')
-const animateValues = (i) => (i == 0)? '' : '0;0.9;0'
+const animateValues = (i) => (i == 0)? '' : '0.2;0.9;0.2'
 const colorSpread = (colors) => colors.join(';')
 
 const Wave = ({colors, id, duration, delay, n = colors.length}) => (
@@ -30,9 +30,9 @@ const Wave = ({colors, id, duration, delay, n = colors.length}) => (
     </radialGradient>
     <radialGradient id="ring">
       <stop
-        offset="0%"
+        offset="50%"
         stopColor="white"
-        stopOpacity="0.1"
+        stopOpacity="0"
       >
         <animate
           attributeName="stop-color"
@@ -43,14 +43,17 @@ const Wave = ({colors, id, duration, delay, n = colors.length}) => (
         />
       </stop>
       <stop
-        offset="95%"
-        stopColor="rgba(240, 230, 80, 1)"
+        offset="80%"
+        stopColor={colors[0]}
+      />
+      <stop
+        offset="93%"
+        stopColor={colors[0]}
       />
       <stop
         offset="100%"
-        stopColor="rgb(240, 230, 80)"
-        stopOpacity="0.3"
-      />
+        stopColor={colors[0]}
+        stopOpacity="0.2" />
     </radialGradient>
   </g>
 )

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Animated } from 'react'
 
 const path = (
   outRadius,
@@ -18,14 +18,18 @@ Z\
 
 const colorSpread = (colors) => colors.join(';')
 
-export default ({outRadius, x, y, colors, duration, width = 100}) => (
+export default ({outRadius, x, y, colors, duration, width = 100}) => {
+
+  return (
   <g>
     <path
       transform={`translate(${x},${y})`}
       d={path(outRadius, width)}
       fill="url(#ring)"
       stroke="rgba(220, 200, 18, 0.0)"
+
       strokeWidth="15"
     />
   </g>
-)
+  )
+}
