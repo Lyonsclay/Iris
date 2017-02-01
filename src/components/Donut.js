@@ -1,4 +1,5 @@
 import React, { Animated } from 'react'
+import { Motion, spring } from 'react-motion'
 
 const path = (
   outRadius,
@@ -21,15 +22,17 @@ const colorSpread = (colors) => colors.join(';')
 export default ({outRadius, x, y, colors, duration, width = 100}) => {
 
   return (
-  <g>
-    <path
+    <Motion defaultStyle={{opacity: 0}} style={{opacity: spring(1)}}>
+    {value =>
+      <path
       transform={`translate(${x},${y})`}
       d={path(outRadius, width)}
       fill="url(#ring)"
       stroke="rgba(220, 200, 18, 0.0)"
-
       strokeWidth="15"
-    />
-  </g>
+      style={{opacity: value}}
+      />
+    }
+    </Motion>
   )
 }
