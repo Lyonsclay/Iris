@@ -5,7 +5,7 @@ const offset = (i, n) => (i*2 > n)? -.2 : 0
 const opacity = (i, n) => (i == n - 1)? 0.1 : .4
 const sequence = [...new Array(10)].map((_, i) => i * 0.04)
 const opacityValues = sequence.concat(sequence.reverse()).join(';')
-const animateValues = (i) => (i == 0)? '' : '0.2;0.9;0.2'
+const animateValues = (i) => (i == 0)? '' : '0.5;0.8;0.5'
 const colorSpread = (colors) => colors.join(';')
 
 const Wave = ({colors, id, duration, delay, n = colors.length}) => (

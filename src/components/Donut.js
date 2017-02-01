@@ -22,17 +22,17 @@ const colorSpread = (colors) => colors.join(';')
 export default ({outRadius, x, y, colors, duration, width = 100}) => {
 
   return (
-    <Motion defaultStyle={{opacity: 0}} style={{opacity: spring(1)}}>
-    {value =>
-      <path
-      transform={`translate(${x},${y})`}
-      d={path(outRadius, width)}
-      fill="url(#ring)"
-      stroke="rgba(220, 200, 18, 0.0)"
-      strokeWidth="15"
-      style={{opacity: value}}
-      />
-    }
+    <Motion defaultStyle={{opacity: 0}} style={{opacity: spring(1, { stiffness: 20, damping: 100})}}>
+      {fill =>
+          <path
+            transform={`translate(${x},${y})`}
+            d={path(outRadius, width)}
+            fill="url(#ring)"
+            stroke="rgba(220, 200, 18, 0.2)"
+            strokeWidth="3"
+            fillOpacity={fill.opacity}
+          />
+      }
     </Motion>
   )
 }
