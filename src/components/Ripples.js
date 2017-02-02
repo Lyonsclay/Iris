@@ -3,7 +3,7 @@ import Wave from './Wave'
 import Donut from './Donut'
 import circles from './Circles'
 
-const ring = 200
+const radius = (window.innerWidth > 500)? 200 : 100
 
 const Ripples = ({colors, x, y}) =>  (
   <g>
@@ -20,9 +20,9 @@ const Ripples = ({colors, x, y}) =>  (
     </defs>
     {circles(colors, x, y)}
     <Donut
-      outRadius={ring}
-      x={x - ring}
-      y={y - ring}
+      outRadius={radius}
+      x={x - radius}
+      y={y - radius}
     />
   </g>
 )

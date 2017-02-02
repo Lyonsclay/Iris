@@ -1,11 +1,11 @@
 import React from 'react'
 
-const offset = (i, n) => (i*2 > n)? -.2 : 0
+/* const offset = (i, n) => (i*2 > n)? -.2 : 0*/
 // Setting last color cirlce to 0 prevents static circle.
-const opacity = (i, n) => (i == n - 1)? 0.1 : .4
-const sequence = [...new Array(10)].map((_, i) => i * 0.04)
-const opacityValues = sequence.concat(sequence.reverse()).join(';')
-const animateValues = (i) => (i == 0)? '' : '0.5;0.8;0.5'
+const opacity = (i, n) => (i === n - 1)? 0.1 : .4
+/* const sequence = [...new Array(10)].map((_, i) => i * 0.04)*/
+/* const opacityValues = sequence.concat(sequence.reverse()).join(';')*/
+const animateValues = (i) => (i === 0)? '' : '0.5;0.8;0.5'
 const colorSpread = (colors) => colors.join(';')
 
 const Wave = ({colors, id, duration, delay, n = colors.length}) => (

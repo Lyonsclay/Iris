@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Ripples from './Ripples'
-import circles from './Circles'
 import colorSet from '../utils/colorSet'
+import { TransitionMotion, spring } from 'react-motion'
 
 const width = window.innerWidth
 const height = window.innerHeight
@@ -12,6 +12,7 @@ export default class Game extends Component {
 
     this.state = {
       ripples: [],
+      enter: [{ key: '1', style: {opacity: 0.8}}],
     }
   }
 
@@ -37,14 +38,16 @@ export default class Game extends Component {
           key={x + colors[0] + y}
         />,
         ...this.state.ripples.slice(0, 40),
-      ]
+      ],
+      enter: [],
     })
   }
 
+  willLeave() {
+    return { opacity: spring(0, { stiffness: 35, damping: 10 }) }
+  }
+
   render() {
-    const colors = colorSet(4)
-    const x = width/2
-    const y = height/2
 
     return (
       <div>
@@ -59,9 +62,39 @@ export default class Game extends Component {
             top: 0,
             bottom: 0,
           }}>
-          <rect x="0" y="0" width="100%" height="100%" fill="rgba(240, 230, 80, 0.4)" />
+
+          <rect
+            x="0"
+            y="0"
+            width="100%"
+            height="100%"
+            fill="rgba(240, 230, 80, 0.4)"
+          />
+          <TransitionMotion
+            willLeave={this.willLeave}
+            styles={this.state.enter}
+          >
+            {styles => (
+               <g>
+                 {styles.map(config => (
+                    <text
+                      key="1"
+                      x={width/3}
+                      y={height/2}
+                      fontSize="32"
+                      fill="gray"
+                      style={{...config.style, fontStyle: 'Helvetica neue'}}
+                    >
+                      Click or Tap anywhere!
+                    </text>
+                  ))
+                 }
+               </g>
+             )
+            }
+          </TransitionMotion>
           {this.state.ripples}
-        </svg >
+        </svg>
       </div>
     )
   }
